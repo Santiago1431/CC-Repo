@@ -1,1 +1,1 @@
-Clique Aqui para Visualizar A resolução
+[Clique Aqui para Visualizar A resolução](<https://grandiose-collision-029.notion.site/Lista-2-Prolog-214b275189c2819990f7d50a07e6778f?source=copy_link>)
