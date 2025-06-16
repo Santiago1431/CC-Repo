@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolução da Lista de Exercícios 2 de Programação Lógica</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #374151; /* Darker gray for text */
+        }
+        .container {
+            max-width: 960px; /* Max width for content */
+            margin: 0 auto; /* Center the container */
+            padding: 1.5rem; /* Padding on all sides */
+        }
+        /* Styling for code blocks */
+        pre {
+            background-color: #1f2937; /* Dark background for code */
+            color: #e5e7eb; /* Light text for code */
+            padding: 1rem;
+            border-radius: 0.5rem; /* Rounded corners */
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        code {
+            font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+        }
+        h1, h2, h3 {
+            color: #111827; /* Even darker gray for headings */
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb; /* Subtle line below sections */
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container bg-white shadow-lg rounded-xl my-8">
+        <header class="text-center py-6 border-b border-gray-200">
+            <h1 class="text-gray-900">Resolução da Lista de Exercícios 2 de Programação Lógica</h1>
+            <p class="text-lg text-gray-600">Por Eurico Santiago Climaco Rodrigues</p>
+        </header>
+
+        <main class="p-6">
+            <section>
+                <h2>Exercício 1:</h2>
+                <p>Qual é o resultado das seguintes consultas em Prolog?</p>
+                <ul>
+                    <li><code>?- forall(member(X,[1,2,3]),write(X)).</code>
+                        <pre><code>123</code></pre>
+                    </li>
+                    <li><code>?- forall(between(1,5,I),(write(I*I),write(’ ’))).</code>
+                        <pre><code>1*1 2*2 3*3 4*4 5*5</code></pre>
+                    </li>
+                    <li><code>?- forall(between(10,20,I),write(I:’ ’)).</code>
+                        <pre><code>10: 11: 12: 13: 14: 15: 16: 17: 18: 19: 20:</code></pre>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Exercício 2:</h2>
+                <p>Considere o seguinte programa Prolog:</p>
+                <pre><code>a:-a(0).
+a(X):- X>10,!.
+a(X):- write(X),write(’ ’), X1 is X+1,a(X1).</code></pre>
+                <p>Qual será o resultado da seguinte consulta Prolog:</p>
+                <p><code>?- a.</code></p>
+                <pre><code>0 1 2 3 4 5 6 7 8 9 10
+true</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 3:</h2>
+                <p>Faça um predicado que gere a pirâmide abaixo. Use o predicado <code>wN/1</code>.</p>
+                <p><code>wN(0):-write(0),!.</code><br>
+                <code>wN(N):-write(N),N1 is N-1, wN(N1),write(N).</code></p>
+                <p>Exemplo de uso:</p>
+                <p><code>?- xxx(3).</code></p>
+                <pre><code>0
+101
+21012
+3210123</code></pre>
+                <h3>Definição dos predicados:</h3>
+                <pre><code>wN(0):- write(0), !.
+wN(N):- write(N), N1 is N - 1, wN(N1), write(N).
+
+xxx(X):-
+    xxx_aux(0,X).
+xxx_aux(Atual, Max):-
+    Max >= Atual,
+    wN(Atual),
+    nl,
+    Prox is Atual + 1,
+    xxx_aux(Prox,Max).
+xxx_aux(_,_).</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 4:</h2>
+                <p>Usando um <strong>acumulador</strong>, e somente as operações <code>(+)</code>, <code>(-)</code>, <code>(*)</code>, desenvolva um predicado Prolog para calcular <strong>X elevado a Y</strong>. Assuma X e Y inteiros.</p>
+                <pre><code>pot(_,0,1).
+pot(X,1,X).
+pot(B,E,R):-
+    E > 1,
+    acc(B,B,E,R).
+
+acc(_,Acc, 1, Acc).
+
+acc(B,Acc,E,R):-
+    E > 1,
+    NovoAcc is Acc * B,
+    NovoE is E - 1,
+    acc(B,NovoAcc,NovoE,R).</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 5:</h2>
+                <p>Dados os fatos:</p>
+                <pre><code>d(0).
+d(1).</code></pre>
+                <p>Qual é o resultado da seguinte consulta Prolog:</p>
+                <p><code>?- findall([A,B],(d(A),d(B)),L).</code></p>
+                <pre><code>L = [[0, 0], [0, 1], [1, 0], [1,1]]</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 6:</h2>
+                <p>Defina o predicado <code>palindromo/1</code>, que é verdadeiro se a lista é um palíndromo, por exemplo, <code>[a,b,c,d,c,b,a]</code>.</p>
+                <pre><code>palindromo(L):-
+    reverse(L,L).</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 7:</h2>
+                <p>Defina um predicado <code>metIguais/1</code>, que é verdadeiro se uma lista é formada por <strong>duas metades iguais</strong>. Use o <code>append</code>. Seguem dois exemplos de uso.</p>
+                <p><code>?-metIguais([a,b,c, a,b,c]).</code><br>
+                <code>Yes</code><br>
+                <code>?-metIguais([a,b,c, a,b,d]).</code><br>
+                <code>No</code></p>
+                <pre><code>metIguais(Lista) :-
+    append(Metade, Metade, Lista),!.</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 8:</h2>
+                <p>Faça um predicado <code>insOrd/3</code>, que insere um elemento numa lista mantendo-a <strong>ordenada</strong>. Faça duas regras: uma base e uma recursiva.</p>
+                <p><code>?-insOrd(4,[2,3,5,7],L).</code><br>
+                <code>L=[2,3,4,5,7] Yes</code></p>
+                <pre><code>insOrd(X,[],[X]).
+insOrd(X,[A|B],[X,A|B]):- X =< A,!.
+insOrd(X,[A|B],[A|C]):-
+    insOrd(X,B,C).</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 9:</h2>
+                <p>Faça um predicado que <code>particiona/3</code> uma lista em duas, de tamanho igual se o número de elementos for par, senão uma delas terá um elemento a mais. Tire dois elementos de uma lista (se possível) e ponha cada um em uma lista resultado.</p>
+                <pre><code>particiona([],[],[]):- !.
+particiona([X],[X],[]):- !.
+particiona([X,Y|C], [X|C1], [Y|C2]):-
+    particiona(C,C2,C1).</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 10:</h2>
+                <p>Faça o predicado <code>merge/3</code>, que junta duas listas ordenadas em uma terceira, mantendo a ordem. Como segue:</p>
+                <p><code>?- merge([a,b,b,k,z], [c,m,n,o], X).</code><br>
+                <code>X=[a,b,b,c,k,m,n,o,z], yes</code></p>
+                <pre><code>merge([],L,L).
+merge(L,[],L).
+merge([A|B],[C|D],[A|E]):-
+    A =< C,
+    merge(B,[C|D],E).
+merge([A|B],[C|D],[C|E]) :-
+    A > C,
+    merge([A|B],D,E).</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 11:</h2>
+                <p>O que está errado no programa abaixo? Rode-o com <code>trace</code>, para:</p>
+                <p><code>?- max(4,3,M)</code> e<br>
+                <code>?- max(3,4,M)</code></p>
+                <pre><code>max(X,Y,M):- !, X>Y, M=X.
+max(X,Y,M):- !, X<=Y, M=Y.</code></pre>
+                <h3>Resposta:</h3>
+                <p>O erro está no <code>!</code> na primeira cláusula de <code>max/3</code>. Ele corta todas as alternativas cedo demais, fazendo com que <code>max(3,4,M)</code> falhe em vez de retornar o valor correto <code>M=4</code>. Para corrigir, o <code>!</code> deve vir após a condição, ou use condições mutuamente exclusivas sem <code>!</code>. O operador de comparação também está declarado de forma errada em Prolog: <code>&lt;=</code>, o correto é <code>=<</code>.</p>
+            </section>
+
+            <section>
+                <h2>Exercício 12:</h2>
+                <p>O que acontece com o predicado <code>p</code>, abaixo, quando o <code>b</code> é executado?</p>
+                <p><code>a. b. p:-!,a. p:-b.</code></p>
+                <h3>Resposta:</h3>
+                <p>Portanto, o predicado <code>b</code> nunca chega a ser executado como parte da definição de <code>p</code> neste cenário, porque o <code>!</code> impede que a segunda cláusula seja considerada.</p>
+            </section>
+
+            <section>
+                <h2>Exercício 13:</h2>
+                <p>Usando <code>findall</code>, defina e teste os predicados <code>pred1/2</code>, <code>pred2/2</code> e <code>pred3/2</code> que modificam uma lista, conforme ilustrado nos seguintes exemplos:</p>
+                <p><code>?- pred1([a,b,c,d,e],L).</code><br>
+                <code>L = [[a],[b],[c],[d],[e]]</code><br>
+                <code>?- pred2([a,b,c,d,e],L).</code><br>
+                <code>L = [pred(a,a),pred(b,b),pred(c,c),pred(d,d),pred(e,e)]</code><br>
+                <code>?- pred3([a,b,c,d,e],L).</code><br>
+                <code>L = [[element,a],[element,b],[element,c],[element,d],[element,e]]</code></p>
+                <pre><code>pred1(X,L):-
+    findall([K], member(K,X),L).
+pred2(X,L):-
+    findall(pred(K,K), member(K,X), L).
+pred3(X,L):-
+    findall([element,K], member(K,X), L).</code></pre>
+            </section>
+
+            <section>
+                <h2>Exercício 14:</h2>
+                <p>Considere o seguinte problema: “Há dois jarros com capacidades de 3 e 4 litros, respectivamente. Nenhum dos jarros contém qualquer medida ou escala, de modo que só se pode saber o conteúdo exato quando eles estão cheios. Sabendo-se que podemos encher ou esvaziar um jarro, bem como transferir água de um jarro para outro, encontre uma sequência de passos que deixe o jarro de 4 litros com exatamente 2 litros de água”.</p>
+                <p>Considere que o estado inicial pode ser representado pela lista <code>[0,0]</code>, indicando que os jarros de 3 e 4 litros estão vazios inicialmente e a meta é <code>[_,2]</code>. Complete os predicados <code>transforma</code> abaixo para descrever todas as transformações possíveis de estados desse problema.</p>
+                <pre><code>transforma('encher o jarro 1', [X,Y], [3,Y]) :- X < 3.
+transforma('enchar o jarro 2', [X,Y], [X,4]) :- Y < 4.
+transforma('esvaziar o jarro 1', [X,Y], [0,Y]) :- X > 0.
+transforma('esvaziar o jarro 2', [X,Y], [X,0]) :- Y > 0.
+transforma('transferir do jarro 1 para o 2', [X,Y], [0,Y1]) :- X > 0, Y < 4, Y1 is Y + X, Y1 =&lt; 4.
+transforma('transferir do jarro 2 para o 1', [X,Y], [X1,0]) :- Y > 0, X < 3, X1 is Y + X, X1 =&lt; 3.
+%--- considerando que ainda restara agua no jarro de origem
+transforma('transferir do jarro 1 para o 2', [X,Y], [X1,4]) :- X > 0, Y < 4, X1 is Y + X - 4, X + Y > 4.
+transforma('transferir do jarro 2 para o 1', [X,Y], [3,Y1]) :- Y > 0, X < 3, Y1 is Y + X - 3, X + Y > 3.</code></pre>
+            </section>
+        </main>
+
+        <footer class="text-center py-4 text-gray-500 text-sm border-t border-gray-200 mt-6">
+            Documento gerado por Eurico Santiago Climaco Rodrigues
+        </footer>
+    </div>
+</body>
+</html>
