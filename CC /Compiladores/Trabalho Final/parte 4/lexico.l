@@ -5,7 +5,7 @@
     #include <stdlib.h>
 
     char atomo[100];
-    void msg(char *);
+    void yyeror(char *);
     int nLin = 1; /* Contador de linhas */
 %}
 
@@ -77,7 +77,7 @@ F               { return T_F; }
 <coment>.       ;   /* Ignora qualquer caractere */
 <coment>\n      ++nLin;
 
-.               ;   /* Ignora caracteres não reconhecidos (poderia dar erro léxico) */
+.               yyerror("Erro Lexico");   /* Ignora caracteres não reconhecidos (poderia dar erro léxico) */
 
 %%
 
