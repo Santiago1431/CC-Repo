@@ -1,0 +1,12 @@
+digraph {
+	node [shape=record, height= .1] ;
+	n0x5ab083ee47b0 [label="*|0"];
+	n0x5ab083ee4730 [label="n|12"];
+	n0x5ab083ee4790 [label="+|0"];
+	n0x5ab083ee4750 [label="n|1"];
+	n0x5ab083ee4770 [label="n|2"];
+	n0x5ab083ee47b0 -> n0x5ab083ee4730
+	n0x5ab083ee47b0 -> n0x5ab083ee4790
+	n0x5ab083ee4790 -> n0x5ab083ee4750
+	n0x5ab083ee4790 -> n0x5ab083ee4770
+}
