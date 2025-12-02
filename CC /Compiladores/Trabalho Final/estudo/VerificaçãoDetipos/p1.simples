@@ -1,0 +1,8 @@
+programa teste
+    inteiro a b
+inicio
+    leia a
+    enquanto a < 10 faca
+         a <- a + 1
+    fimenquanto
+fimprograma

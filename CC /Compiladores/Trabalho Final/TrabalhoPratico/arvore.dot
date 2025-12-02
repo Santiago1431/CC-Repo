@@ -1,0 +1,54 @@
+digraph {
+	node [shape=record, height= .1] ;
+	n0x62096449c370 [label="PROG |  "];
+	n0x62096449b6f0 [label="IDF | maior"];
+	n0x62096449b9f0 [label="DCVR |  "];
+	n0x62096449b770 [label="TIPO | inteiro"];
+	n0x62096449b970 [label="LIVR |  "];
+	n0x62096449b7f0 [label="IDF | a"];
+	n0x62096449b8f0 [label="LIVR |  "];
+	n0x62096449b870 [label="IDF | b"];
+	n0x62096449c2f0 [label="LICM |  "];
+	n0x62096449baf0 [label="LER |  "];
+	n0x62096449ba70 [label="IDF | a"];
+	n0x62096449c270 [label="LICM |  "];
+	n0x62096449bbf0 [label="LER |  "];
+	n0x62096449bb70 [label="IDF | b"];
+	n0x62096449c1f0 [label="LICM |  "];
+	n0x62096449c170 [label="SELE |  "];
+	n0x62096449bdf0 [label="NEGA |  "];
+	n0x62096449bd70 [label="MENOR |  "];
+	n0x62096449bc70 [label="VAR | a"];
+	n0x62096449bcf0 [label="VAR | b"];
+	n0x62096449bf70 [label="LICM |  "];
+	n0x62096449bef0 [label="ESCR |  "];
+	n0x62096449be70 [label="VAR | a"];
+	n0x62096449c0f0 [label="LICM |  "];
+	n0x62096449c070 [label="ESCR |  "];
+	n0x62096449bff0 [label="VAR | b"];
+	n0x62096449c370 -> n0x62096449b6f0
+	n0x62096449c370 -> n0x62096449b9f0
+	n0x62096449b9f0 -> n0x62096449b770
+	n0x62096449b9f0 -> n0x62096449b970
+	n0x62096449b970 -> n0x62096449b7f0
+	n0x62096449b970 -> n0x62096449b8f0
+	n0x62096449b8f0 -> n0x62096449b870
+	n0x62096449c370 -> n0x62096449c2f0
+	n0x62096449c2f0 -> n0x62096449baf0
+	n0x62096449baf0 -> n0x62096449ba70
+	n0x62096449c2f0 -> n0x62096449c270
+	n0x62096449c270 -> n0x62096449bbf0
+	n0x62096449bbf0 -> n0x62096449bb70
+	n0x62096449c270 -> n0x62096449c1f0
+	n0x62096449c1f0 -> n0x62096449c170
+	n0x62096449c170 -> n0x62096449bdf0
+	n0x62096449bdf0 -> n0x62096449bd70
+	n0x62096449bd70 -> n0x62096449bc70
+	n0x62096449bd70 -> n0x62096449bcf0
+	n0x62096449c170 -> n0x62096449bf70
+	n0x62096449bf70 -> n0x62096449bef0
+	n0x62096449bef0 -> n0x62096449be70
+	n0x62096449c170 -> n0x62096449c0f0
+	n0x62096449c0f0 -> n0x62096449c070
+	n0x62096449c070 -> n0x62096449bff0
+}

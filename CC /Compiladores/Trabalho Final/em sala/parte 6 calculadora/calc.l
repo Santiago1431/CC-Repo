@@ -17,7 +17,6 @@ void yyerror(char *);
 "("  {return T_ABRE;}
 ")"  {return T_FECHA;}
 "\n" {return T_ENTER;}
-
 [0-9]+ {
         yylval = criaNo('n', atoi(yytext));
         return T_NUM;
@@ -26,5 +25,8 @@ void yyerror(char *);
 [ \t] /*faz nada*/
 .   yyerror("erro lexico - simbolo desconhecido");
 
+
+
 %%
+
 int yywrap(void) {return 1; }

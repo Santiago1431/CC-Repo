@@ -1,0 +1,11 @@
+programa teste1
+    inteiro a 
+    logico b
+inicio
+    a <- 10 > 4
+    b <- 10
+    enquanto  a + 1 faca
+        escreva a
+        a <- a - 1
+    fimenquanto
+fimprograma
